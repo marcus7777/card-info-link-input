@@ -1,0 +1,36 @@
+<link rel="import" href="../image-base64/image-base64.html">
+<link rel="import" href="../iron-ajax/iron-ajax.html">
+<link rel="import" href="../url-encode/url-encode.html">
+<link rel="import" href="../paper-input/paper-input.html">
+<!--
+  `<card-info-link-input></card-info-link-input>` 
+  @demo demo.html
+-->
+<dom-module id="card-info-link-input">
+  <template>
+    <style>
+      :host {display:inline-block;background:#fff}
+    </style>
+    <paper-input label="[[label]]" value="{{url}}">
+    </paper-input>
+    <url-encode input="[[url]]" out="{{out}}"></url-encode>
+    <iron-ajax auto url="https://info.open-elements.org/url/[[out]]" handle-as="json" last-response="{{value}}"></iron-ajax>
+    <template is="dom-if" if="[[value.cardIcon]]">
+      <image-base64 url="[[value.cardIcon]]" base64="{{img}}" width="200" ></image-base64>
+      <center><img src="[[img]]" /></center>
+    </template>
+    <h3>[[value.title]]</h3>
+    <h4>[[value.desc ]]</h4>
+    <h5>[[value.link ]]</h5>
+  </template>
+</dom-module>
+<script>
+  Polymer({
+    is: "card-info-link-input",
+    properties:{
+      value:{
+        notify:true,
+      },
+    },
+  })
+</script>

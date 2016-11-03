@@ -1,0 +1,16 @@
+{
+  "name": "card-info-link-input",
+  "version": "1.0.0",
+  "description": "",
+  "main": "card-info-link-input.html",
+  "keywords": [
+    "polymer",
+    "web-components"
+  ],
+  "dependencies": {
+    "paper-input": "PolymerElements/paper-input#1d4798916a",
+    "url-encode": "marcus7777/url-encode#988d8879d3",
+    "iron-ajax": "PolymerElements/iron-ajax#59d908fcd0",
+    "image-base64": "marcus7777/image-base64#193681247c"
+  }
+}
