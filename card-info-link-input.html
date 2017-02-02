@@ -34,5 +34,12 @@
         notify:true,
       },
     },
+    attached: function(){
+      if (this.value) {
+        if (this.value.link) {
+          this.url = this.value.link
+        }
+      }
+    }
   })
 </script>
