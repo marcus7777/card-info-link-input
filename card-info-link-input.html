@@ -11,7 +11,7 @@
     <style>
       :host {display:inline-block;background:#fff}
     </style>
-    <paper-input label="[[label]]" value="{{url}}">
+    <paper-input label="[[label]]" value="{{url}}" invalid="{{invalid}}" auto-validate  pattern="(\b(https?)://)[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]">
     </paper-input>
     <template is="dom-if" if="[[url]]" restamp>
       <url-encode input="[[url]]" out="{{out}}"></url-encode>
@@ -33,6 +33,19 @@
       value:{
         notify:true,
       },
+      restamp: {
+        computed:"restampMe(url,invalid)"
+      }
+    },
+    restampMe: function(url,invalid){
+      if (url) {
+        if (!invalid) {
+          this.async(this.restampMe,100)
+        }
+        return false
+      } else {
+        return true
+      }
     },
     attached: function(){
       if (this.value) {
