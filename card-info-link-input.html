@@ -13,7 +13,7 @@
     </style>
     <paper-input label="[[label]]" value="{{url}}" invalid="{{invalid}}" auto-validate  pattern="(\b(https?)://)[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]">
     </paper-input>
-    <template is="dom-if" if="[[restamp]]" restamp>
+    <template is="dom-if" if="[[_restamp]]" restamp>
       <url-encode input="[[url]]" out="{{out}}"></url-encode>
       <iron-ajax auto url="https://info.open-elements.org/url/[[out]]" handle-as="json" last-response="{{value}}"></iron-ajax>
       <template is="dom-if" if="[[value.cardIcon]]">
@@ -33,7 +33,7 @@
       value:{
         notify:true,
       },
-      restamp: {
+      _restamp: {
         computed:"restampMe(url,invalid)"
       },
       _setUrl:{
@@ -50,14 +50,15 @@
     restampMe: function(url,invalid){
       if (url) {
         if (!invalid) {
-          this.async(this.restampMe,100)
-        }
-      } else {
-        if (this.url) {
-          this.restamp = !this.invalid
+          this.async(this._restampMe,100)
         }
       }
       return false
-    }
+    },
+    _restampMe: function(){
+      if (this.url) {
+        this.restamp = !this.invalid
+      }
+    },
   })
 </script>
