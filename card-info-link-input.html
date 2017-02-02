@@ -40,7 +40,7 @@
         computed:"setUrl(url,value)"
       }
     },
-    setUrl: function(value) {
+    setUrl: function(url,value) {
       if (!url && value) {
         if (value.hasOwnProperty("link")) {
           this.set("url",value.link)
