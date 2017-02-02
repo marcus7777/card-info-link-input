@@ -48,17 +48,9 @@
       }
     },
     restampMe: function(url,invalid){
-      if (url) {
-        if (!invalid) {
-          this.async(this._restampMe,100)
-        }
-      }
-      return false
-    },
-    _restampMe: function(){
-      if (this.url) {
-        this.restamp = !this.invalid
-      }
+      this.set("restamp",0)
+      var that = this
+      setTimeout(function(){that.set("restamp",1) }, 0);
     },
   })
 </script>
