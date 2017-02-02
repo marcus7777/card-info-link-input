@@ -44,7 +44,9 @@
         }
         return false
       } else {
-        return !invalid
+        if (this.url) {
+          return !this.invalid
+        }
       }
     },
     attached: function(){
