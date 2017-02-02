@@ -42,12 +42,12 @@
         if (!invalid) {
           this.async(this.restampMe,100)
         }
-        return false
       } else {
         if (this.url) {
-          return !this.invalid
+          this.restamp = !this.invalid
         }
       }
+      return false
     },
     attached: function(){
       if (this.value) {
