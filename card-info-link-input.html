@@ -17,7 +17,7 @@
       <url-encode input="[[url]]" out="{{out}}"></url-encode>
       <iron-ajax auto url="https://info.open-elements.org/url/[[out]]" handle-as="json" last-response="{{value}}"></iron-ajax>
       <template is="dom-if" if="[[value.cardIcon]]" restamp>
-        <image-base64 url="[[value.cardIcon]]" base64="{{value.image}}" width="150" ></image-base64>
+        <image-base64 url="[[value.cardIcon]]" base64="{{value.image}}" max-width="150" ></image-base64>
       </template>
       <template is="dom-if" if="[[value.image]]" restamp>
         <center><img src="[[value.image]]" /></center>
