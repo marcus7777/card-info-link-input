@@ -1,5 +1,6 @@
 <link rel="import" href="../image-base64/image-base64.html">
 <link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../input-image/input-image.html">
 <link rel="import" href="../url-encode/url-encode.html">
 <link rel="import" href="../iron-ajax/iron-ajax.html">
 <!--
@@ -22,7 +23,7 @@
         <image-base64 url="[[value.cardIcon]]" base64="{{value.image}}" max-width="150" ></image-base64>
       </template>
       <template is="dom-if" if="[[value.image]]" restamp>
-        <center><img src="[[value.image]]" /></center>
+        <center><input-image value="[[value.image]]"></input-image></center>
       </template>
       <h3>[[value.title]]</h3>
       <h4>[[value.desc ]]</h4>
