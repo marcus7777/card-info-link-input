@@ -17,13 +17,10 @@
     <template is="dom-if" if="[[restamp]]" restamp>
       <url-encode input="[[url]]" out="{{out}}"></url-encode>
       <template is="dom-if" if="[[!invalid]]" restamp>
-        <iron-ajax auto url="https://info.open-elements.org/url/[[out]]" handle-as="json" last-response="{{value}}"></iron-ajax>
+        <iron-ajax auto url="https://info.open-elements.org/url/[[out]]" handle-as="json" last-response="{{big}}"></iron-ajax>
       </template>
-      <template is="dom-if" if="[[value.cardIcon]]" restamp>
-        <image-base64 url="[[value.cardIcon]]" base64="{{value.image}}" max-width="150" ></image-base64>
-      </template>
-      <template is="dom-if" if="[[value.image]]" restamp>
-        <center><input-image value="[[value.image]]"></input-image></center>
+      <template is="dom-if" if="[[big.image]]" restamp>
+        <center><input-image big="[[big.image]]" value="[[value.image]]"></input-image></center>
       </template>
       <h3>[[value.title]]</h3>
       <h4>[[value.desc ]]</h4>
@@ -37,6 +34,7 @@
     properties:{
       value:{
         notify:true,
+        value:{},
       },
       _restamp: {
         computed:"restampMe(url,invalid)"
@@ -44,9 +42,17 @@
       _setUrl:{
         computed:"setUrl(url,value)"
       },
+      _copy:{
+        computed:"doCopy(big)"
+      },
       removedCardIcon: {
         computed:"_removedCardIcon(value.cardIcon,value.image)"
       },
+    },
+    doCopy: function(big) {
+      this.value.title = this.big.title
+      this.value.desc = this.big.desc
+      this.value.link = this.big.link
     },
     _removedCardIcon: function(cardIcon,image) {
       if (cardIcon && image) {
