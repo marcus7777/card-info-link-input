@@ -19,8 +19,10 @@
       <template is="dom-if" if="[[!invalid]]" restamp>
         <iron-ajax auto url="https://info.open-elements.org/url/[[out]]" handle-as="json" last-response="{{big}}"></iron-ajax>
       </template>
+      
       <template is="dom-if" if="[[big.image]]" restamp>
-        <center><input-image big="[[big.image]]" value="[[value.image]]"></input-image></center>
+        <image-base64 hidden url="{{big.image}}" base64="{{image}}" width="250"></image-base64>
+        <center><input-image big="[[image]]" value="[[value.image]]"></input-image></center>
       </template>
       <h3>[[value.title]]</h3>
       <h4>[[value.desc ]]</h4>
