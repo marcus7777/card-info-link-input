@@ -25,7 +25,9 @@
         <paper-input label="link" value="{{value.link}}" ></paper-input>
       </template>
       <image-base64 url="[[big.image]]" base64="{{value.image}}" width="250"></image-base64>
-      <img src="{{value.image}}" />
+      <template is="dom-if" if="[[value.image]]">
+        <img src="[[value.image]]" />
+      </template>
       <h3>[[value.title]]</h3>
       <h4>[[value.desc ]]</h4>
       <h5>[[value.link ]]</h5>
