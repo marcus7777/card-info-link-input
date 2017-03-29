@@ -15,8 +15,10 @@
     <paper-input label="[[label]]" value="{{url}}" invalid="{{invalid}}" auto-validate pattern="(\b(https?)://)[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]"></paper-input>
     <template is="dom-if" if="[[restamp]]" restamp>
       <url-encode input="[[url]]" out="{{out}}"></url-encode>
-      <template is="dom-if" if="[[!invalid]]" restamp>
-        <iron-ajax auto url="https://info.open-elements.org/url/[[out]]" handle-as="json" last-response="{{big}}"></iron-ajax>
+      <template is="dom-if" if="[[out]]" restamp>
+        <template is="dom-if" if="[[!invalid]]" restamp>
+          <iron-ajax auto url="https://info.open-elements.org/url/[[out]]" handle-as="json" last-response="{{big}}"></iron-ajax>
+        </template>
       </template>
       <template is="dom-if" if="[[edit]]" restamp>
         <center><input-image value="[[value.image]]"></input-image></center>
